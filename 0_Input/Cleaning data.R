@@ -6,7 +6,11 @@ library(ggfortify)
 library(MASS)
 library(readr)
 getOption("repos")
-
 gutweights<- read_csv("0_Input/gutweights.csv")
 
-dim()
+dim(gutweights)
+str(gutweights) 
+gw = subset(gutweights, select = -c(...9,...10,...11))
+str(gw)
+na.omit(gw)
+gw %>% mutate(totweight = gw$Drywt - gw$Traywt)
